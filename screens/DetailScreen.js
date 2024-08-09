@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, ScrollView, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, Image, ActivityIndicator, ScrollView, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 import { API_DETAIL_URL } from '@env'
 import useFetch from '../hooks/useFetch/useFetch';
@@ -8,6 +8,9 @@ export default function DetailScreen({ route }) {
 
     const { loading, data, error } = useFetch(API_DETAIL_URL + value)
 
+    const openURL = (url) => {
+        Linking.openURL(url).catch((err) => console.error("An error occurred", err));
+    }
 
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
@@ -31,7 +34,7 @@ export default function DetailScreen({ route }) {
                     <Text style={styles.area}>{mealData.strArea}</Text>
                 </View>
                 <Text style={styles.desc}>{mealData.strInstructions}</Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => openURL(mealData.strYoutube)}>
                     <Text style={styles.buttonTitle}>Watch on Youtube</Text>
                 </TouchableOpacity>
             </View>
@@ -65,14 +68,14 @@ const styles = StyleSheet.create({
     desc: {
         margin: 5,
     },
-    button:{
-        backgroundColor:'red',
-        padding:10,
-        margin:10,
-        borderRadius:5,
-        alignItems:'center'
+    button: {
+        backgroundColor: 'red',
+        padding: 10,
+        margin: 10,
+        borderRadius: 5,
+        alignItems: 'center'
     },
-    buttonTitle:{
-        color:'white'
+    buttonTitle: {
+        color: 'white'
     }
 })
