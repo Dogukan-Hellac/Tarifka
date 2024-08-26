@@ -32,6 +32,7 @@ Bu proje, kullanıcılara farklı yemek tarifleri sunan bir React Native uygulam
 
 ### Ekran Görüntüleri
 
-    ![Ana Ekran](./1.png)
-    ![Ana Ekran](./2.png)
-    ![Ana Ekran](./3.png)
+![Ana Ekran](./1.png)
+![Ana Ekran](./2.png)
+
+![Ana Ekran](./3.png)
